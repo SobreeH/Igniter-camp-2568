@@ -44,9 +44,6 @@ const char* password = "11223344";
 #define RX_PIN -1
 #define TX_PIN 13
 
-
-
-
 static const char* _STREAM_CONTENT_TYPE = "multipart/x-mixed-replace;boundary=" PART_BOUNDARY;
 static const char* _STREAM_BOUNDARY = "\r\n--" PART_BOUNDARY "\r\n";
 static const char* _STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %u\r\n\r\n";
@@ -132,14 +129,6 @@ static const char PROGMEM INDEX_HTML[] = R"rawliteral(
         </td>
       </tr>                   
     </table>
-    <tr>
-  <td colspan="3" align="center">
-    <button class="button" onmousedown="sendCommand('up');">Up</button>
-    <button class="button" onmousedown="sendCommand('center');">Center</button>
-    <button class="button" onmousedown="sendCommand('down');">Down</button>
-  </td>
-</tr>
-
    <script>
 function sendCommand(x) {
   var xhr = new XMLHttpRequest();
@@ -302,19 +291,6 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     Serial.println("Stop");
     Serial1.println("S");
   }
-  else if(!strcmp(variable, "up")) {
-  Serial.println("Servo Up");
-  Serial1.println("U");
-}
-else if(!strcmp(variable, "down")) {
-  Serial.println("Servo Down");
-  Serial1.println("D");
-}
-else if(!strcmp(variable, "center")) {
-  Serial.println("Servo Center");
-  Serial1.println("C");
-}
-
   else {
     res = -1;
   }
@@ -407,12 +383,11 @@ void setup() {
     return;
   }
   // Wi-Fi connection
-  WiFi.begin(ssid,password);
-    while (WiFi.status() != WL_CONNECTED) {
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-
   Serial.println("");
   Serial.println("WiFi connected");
   
