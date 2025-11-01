@@ -17,8 +17,8 @@
 
 
 // Replace with your network credentials
-const char* ssid = "sobree";
-const char* password = "88483800";
+const char* ssid = "iot";
+const char* password = "11223344";
 
 #define PART_BOUNDARY "123456789000000000000987654321"
 
