@@ -337,6 +337,8 @@ void startCameraServer(){
 }
 
 void setup() {
+  pinMode(4,OUTPUT);
+  digitalWrite(4,HIGH);
   WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //disable brownout detector
   
   Serial.begin(115200);
